@@ -1,0 +1,80 @@
+type User {
+  _id: ID
+  username: String!
+  email: String!
+  password: String!
+  avatar: String
+  joinDate: String
+  favorites: [Post]
+}
+
+type Post {
+  _id: ID
+  title: String!
+  imageUrl: String!
+  categories: [String]!
+  description: String!
+  createdDate: String
+  likes: Int
+  comments: Int
+  createdBy: User!
+  messages: [Message]
+}
+
+type Message {
+  _id: ID
+  messageBody: String!
+  messageDate: String
+  messageUser: User!
+}
+
+type Token {
+  token: String!
+}
+
+type PostsPage {
+  posts: [Post]
+  hasMore: Boolean
+}
+
+type LikesFaves {
+  likes: Int!
+  favorites: [Post]!
+}
+
+type Query {
+  getCurrentUser: User
+  getUsers: [User]
+  getPosts: [Post]
+  searchPosts(searchText: String): [Post]
+  userPosts(userId: ID): [Post]
+  getPost(id: ID!): Post!
+  infiniteScrollPosts(pageNum: Int!, pageSize: Int!): PostsPage
+}
+
+type Mutation {
+  addPostMessage(messageBody: String!, userId: ID!, postId: ID!): Message!
+  likePost(postId: ID!, userId: ID!): LikesFaves!
+  unlikePost(postId: ID!, userId: ID!): LikesFaves!
+  signinUser(username: String!, password: String!): Token
+  signupUser(username: String!, email: String!, password: String!): Token
+
+  addPost(
+    title: String!
+    imageUrl: String!
+    categories: [String]!
+    description: String!
+    creatorId: ID!
+  ): Post
+
+  updateUserPost(
+    _id: ID!
+    title: String!
+    imageUrl: String!
+    categories: [String]!
+    description: String!
+    creatorId: ID!
+  ): Post
+
+  deleteUserPost(postId: ID!, userId: ID!): Post!
+}

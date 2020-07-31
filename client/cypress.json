@@ -1,0 +1,12 @@
+{
+  "pluginsFile": "tests/e2e/plugins/index.js",
+  "baseUrl": "http://localhost:8080/",
+  "viewportWidth": 1024,
+  "viewportHeight": 728,
+  "waitForAnimations": true,
+  "failOnStatusCode": false,
+  "watchForFileChanges": false,
+  "requestTimeout": 5000,
+  "responseTimeout": 5000,
+  "video": false
+}
