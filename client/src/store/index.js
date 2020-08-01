@@ -220,8 +220,6 @@ export default new Vuex.Store({
         mutation: ADD_POST,
         variables: payload,
         update(cache, { data: { addPost } }) {
-          // console.log({ cache, addPost });
-
           // update getPosts cached apollo server query
           try {
             // Get the query data
@@ -235,27 +233,6 @@ export default new Vuex.Store({
           } catch (error) {
             console.error(error);
           }
-
-          // // update userPosts cached apollo server query
-          // try {
-          //   // Get the query data
-          //   const userPosts = cache.readQuery({
-          //     query: USER_POSTS,
-          //     variables: { userId: payload.creatorId },
-          //   });
-          //   if (userPosts) {
-          //     // Set the new data to cache
-          //     userPosts.userPosts.unshift(addPost);
-          //     // Update the query with the updated posts
-          //     cache.writeQuery({
-          //       query: USER_POSTS,
-          //       variables: { userId: payload.creatorId },
-          //       data: userPosts,
-          //     });
-          //   }
-          // } catch (error) {
-          //   console.error(error);
-          // }
         },
         optimisticResponse: {
           __typename: "Mutation",

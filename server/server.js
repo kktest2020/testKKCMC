@@ -65,6 +65,5 @@ const server = new ApolloServer({
 
 // Start Apollo/GraphQL Server by listening to the default port 27017
 server.listen({ port: 4000 }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url} `);
-  console.log("server");
+  console.log(`🚀 ApolloServer GraphQl ready at ${url} `);
 });
