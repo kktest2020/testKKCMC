@@ -97,7 +97,8 @@ export default new Vuex.Store({
             message: error.message,
           });
 
-          router.go();
+          // Disable page reload on login
+          // router.go();
         });
     },
     signinUser: ({ dispatch, commit }, payload) => {
